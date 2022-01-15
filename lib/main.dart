@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:c_notes/splash.dart';
 import 'package:flutter/material.dart';
 
 import 'constant/home_button.dart';
@@ -22,7 +26,30 @@ class MyApp extends StatelessWidget {
             centerTitle: true,
             elevation: 5,
           )),
-      home: const MyHomePage(title: 'Modern Tech.'),
+      // home: const MyHomePage(title: 'Modern Tech.'),
+      home: AnimatedSplashScreen(
+        duration: 1750,
+        splashTransition: SplashTransition.fadeTransition,
+        // backgroundColor: Colors.amber,
+        animationDuration: const Duration(milliseconds: 1700),
+        // ignore: avoid_unnecessary_containers
+        splash: Wrap(alignment: WrapAlignment.spaceAround, children: const [
+          Icon(
+            Icons.label_important_outlined,
+            color: Colors.black,
+            size: 150,
+          ),
+          Icon(
+            Icons.label_important_outlined,
+            color: Colors.black,
+            size: 150,
+          ),
+        ]),
+
+        nextScreen: const MyHomePage(
+          title: "",
+        ),
+      ),
     );
   }
 }
